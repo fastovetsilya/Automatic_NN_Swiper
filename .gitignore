@@ -1,0 +1,16 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+# Ignore everything but
+*
+
+!.gitignore
+
+!data_preparation.py    
+!build_model.py    
+!train_model.py
+!screenshot.py
+!clicker.py                              
+!sort_pictures.py
+!LICENSE                             
+!README.md   
+
+!*/
