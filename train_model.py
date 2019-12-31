@@ -66,27 +66,28 @@ Test_y = test_data[1]
 
 # Make the model
 model = VGG_16()
-model.compile(optimizer='nadam', loss='binary_crossentropy', metrics=['binary_accuracy', matthews_correlation])
+model.compile(optimizer='nadam', loss='binary_crossentropy', metrics=['binary_accuracy'])
 
 # Train the model
 history = model.fit(Train_X, Train_y, batch_size=10, 
-          epochs=30, validation_data = [Test_X, Test_y])
-# plt.plot(history.history['val_loss'])
-# plt.plot(history.history['loss'])
+          epochs=50, validation_data = [Test_X, Test_y])
+plt.plot(history.history['val_loss'])
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_binary_accuracy'])
 
 # Or use automatic image generator to train the model
-datagen = ImageDataGenerator(
-    featurewise_center=True,
-    featurewise_std_normalization=True,
-    rotation_range=20,
-    width_shift_range=0.2,
-    height_shift_range=0.2,
-    horizontal_flip=True)
+# datagen = ImageDataGenerator(
+#     featurewise_center=True,
+#     featurewise_std_normalization=True,
+#     rotation_range=20,
+#     width_shift_range=0.2,
+#     height_shift_range=0.2,
+#     horizontal_flip=True)
 
-datagen.fit(Train_X)
+# datagen.fit(Train_X)
 
-model.fit_generator(datagen.flow(Train_X, Train_y, batch_size=10), 
-          epochs=30, validation_data = [Test_X, Test_y])
+# model.fit_generator(datagen.flow(Train_X, Train_y, batch_size=10), 
+#           epochs=30, validation_data = [Test_X, Test_y])
 
 # Save the model
 model.save('trained_model.h5')
