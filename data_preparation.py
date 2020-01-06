@@ -43,8 +43,8 @@ def create_image_data(filenames_list, classtype = 'No'):
     
     return(image_data)
     
-# Concatenate image tensors and create target
 def generate_dataset(yes_images, no_images):
+    # Concatenate image tensors and create target
     yes_target = np.repeat(1, yes_images.shape[0])
     no_target = np.repeat(0, no_images.shape[0])
     images_data = np.concatenate((yes_images, no_images))

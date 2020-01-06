@@ -13,8 +13,10 @@ gc.disable()
 
 # Process raw data
 # Load the images    
-# yes_images = prepare.create_image_data(yes_filenames, classtype = 'Yes')
-# no_images = prepare.create_image_data(no_filenames, classtype = 'No')
+yes_filenames = os.listdir(os.getcwd() + '/Yes')
+no_filenames = os.listdir(os.getcwd() + '/No')
+yes_images = prepare.create_image_data(yes_filenames, classtype = 'Yes')
+no_images = prepare.create_image_data(no_filenames, classtype = 'No')
 
 # Or load the .pickle file with the fetched images
 # file = open('images_Yes.pickle', 'rb')
@@ -66,7 +68,7 @@ Test_y = test_data[1]
 
 # Make the model
 model = VGG_16()
-model.compile(optimizer='nadam', loss='binary_crossentropy', metrics=['binary_accuracy'])
+model.compile(optimizer='nadam', loss='binary_crossentropy', metrics=['binary_accuracy', matthews_correlation])
 
 # Train the model
 history = model.fit(Train_X, Train_y, batch_size=10, 
