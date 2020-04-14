@@ -2,7 +2,7 @@
 
 ## Description
 Automatic swiping tool for dating sites. It takes a screenshot, feeds it to a convolutional neural network (CNN) and 
-makes a descision where to swipe. After decision is made, automatic clicker ckicks on the corresponding putton, and 
+makes a descision where to swipe. After decision is made, automatic clicker ckicks on the corresponding button, and 
 the cycle repeats. 
 
 Testing and README creation in progress
