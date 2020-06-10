@@ -19,15 +19,15 @@ yes_images = prepare.create_image_data(yes_filenames, classtype = 'Yes')
 no_images = prepare.create_image_data(no_filenames, classtype = 'No')
 
 # Or load the .pickle file with the fetched images
-# file = open('images_Yes.pickle', 'rb')
-# yes_images = pickle.load(file)
-# file.close()
-# file = open('images_No.pickle', 'rb')
-# no_images = pickle.load(file)
-# file.close()
+file = open('images_Yes.pickle', 'rb')
+yes_images = pickle.load(file)
+file.close()
+file = open('images_No.pickle', 'rb')
+no_images = pickle.load(file)
+file.close()
 
 # Create image dataset
-# dataset = prepare.generate_dataset(yes_images, no_images)
+dataset = prepare.generate_dataset(yes_images, no_images)
 
 # Load the data
 file = open('data.pickle', 'rb')
