@@ -1,87 +1,46 @@
 # Load the modules
 from keras.models import Sequential
-from keras.layers.core import Flatten, Dense, Dropout
-from keras.layers.convolutional import Conv2D, MaxPooling2D, ZeroPadding2D
+from keras.layers import Flatten, Dense, BatchNormalization, Activation, AlphaDropout
+from keras.layers.convolutional import Conv2D, MaxPooling2D
 import keras.backend as K
 
-
-def VGG_16(weights_path='./vgg16_weights.h5'):
+def convolutional_model():
     '''
-    This function builds a pre-trained VGG-16 Neural Network and loads 
-    weights from the weights path specified in the input of the function.
-    After loading weights to the convolutional layers dense layers are 
-    added at the top of the model (the layers that are trained).
+    This function builds a simple convolutional neural network with Keras
+    '''
     
-    '''
-
-    # Original VGG_16 with pre-trained weights
+    # Simple model
     model = Sequential()
     
-    model.add(ZeroPadding2D((1, 1), input_shape=(
-        224, 224, 3), data_format='channels_last'))
-    model.add(Conv2D(64, kernel_size=(3, 3), strides=1, activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(64, kernel_size=(3, 3), strides=1, activation='relu'))
-    model.add(MaxPooling2D((2, 2), strides=(
-        2, 2), data_format='channels_last'))
-
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(128, kernel_size=(3, 3), activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(128, kernel_size=(3, 3), activation='relu'))
-    model.add(MaxPooling2D((2, 2), strides=(
-        2, 2), data_format='channels_last'))
-
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(256, kernel_size=(3, 3), activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(256, kernel_size=(3, 3), activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(256, kernel_size=(3, 3), activation='relu'))
-    model.add(MaxPooling2D((2, 2), strides=(
-        2, 2), data_format='channels_last'))
-
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(512, kernel_size=(3, 3), activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(512, kernel_size=(3, 3), activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(512, kernel_size=(3, 3), activation='relu'))
-    model.add(MaxPooling2D((2, 2), strides=(
-        2, 2), data_format='channels_last'))
-
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(512, kernel_size=(3, 3), activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(512, kernel_size=(3, 3), activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Conv2D(512, kernel_size=(3, 3), activation='relu'))
-    model.add(MaxPooling2D((2, 2), strides=(
-        2, 2), data_format='channels_last'))
-
-    # model.add(Flatten())
-    # model.add(Dense(4096, activation='relu'))
-    # model.add(Dropout(0.5))
-    # model.add(Dense(4096, activation='relu'))
-    # model.add(Dropout(0.5))
-    # model.add(Dense(1000, activation='softmax'))
-
-    model.load_weights(weights_path, by_name=True)
-
-    # set trainable to false in all layers
-    for layer in model.layers:
-        if hasattr(layer, 'trainable'):
-            layer.trainable = False
-            
+    model.add(BatchNormalization(input_shape=(224, 224, 3)))
+    model.add(Conv2D(32, (3, 3)))
+    model.add(Activation('elu'))
+    model.add(BatchNormalization())
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    
+    model.add(BatchNormalization())
+    model.add(Conv2D(32, (3, 3)))
+    model.add(Activation('elu'))
+    model.add(BatchNormalization())
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    
+    model.add(BatchNormalization())
+    model.add(Conv2D(64, (3, 3)))
+    model.add(Activation('elu'))
+    model.add(BatchNormalization())
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    
     model.add(Flatten())
-    model.add(Dense(4096, activation='relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(4096, activation='relu'))
-    model.add(Dropout(0.5))
+    model.add(BatchNormalization())
+    model.add(Dense(1024, activation='elu'))
+    model.add(BatchNormalization())
+    model.add(AlphaDropout(0.5))
+    model.add(Dense(1024, activation='elu'))
+    model.add(BatchNormalization())
+    model.add(AlphaDropout(0.3))
     model.add(Dense(1, activation='sigmoid'))
-        
-    return model
 
+    return model
 
 def matthews_correlation(y_true, y_pred):
     '''
