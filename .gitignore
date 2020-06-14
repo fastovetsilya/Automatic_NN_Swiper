@@ -6,8 +6,8 @@
 !.gitignore
 
 !*.py
-!./icons/no.png
-!./icons/yes.png
+!/icons/no.png
+!/icons/yes.png
 !LICENSE                             
 !README.md   
 
