@@ -5,7 +5,7 @@
 
 !.gitignore
 
-*.py
+!*.py
 !LICENSE                             
 !README.md   
 
