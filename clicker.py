@@ -1,6 +1,5 @@
 # import matplotlib.pyplot as plt
 from model import matthews_correlation
-from skimage.io import imsave
 # from skimage.transform import resize
 from keras.preprocessing.image import img_to_array
 from keras.models import load_model
@@ -85,9 +84,8 @@ class Clicker():
             raise Exception('Model not loaded. Please load model first')
         
         else: 
-            screenshot = self.screenshot
-            screenshot = screenshot.resize(size=(224, 300))
-            self.screenshot_resized = screenshot
+            self.resize_screenshot()
+            screenshot = self.screenshot_resized
             screenshot_arr = img_to_array(screenshot)
             screenshot_arr = np.array([screenshot_arr])
             prob_predicted = model.predict(screenshot_arr)[0][0]
@@ -102,18 +100,24 @@ class Clicker():
             self.decision = decision
     
     
+    def resize_screenshot(self):
+        screenshot = self.screenshot
+        screenshot = screenshot.resize(size=(224, 300))
+        self.screenshot_resized = screenshot
+        
+    
     def save_screenshot(self):
         screenshot = self.screenshot_resized
         decision = self.decision
             
         if decision == 1:
             time_now = str(datetime.datetime.now())
-            savedir = './saved_screenshots/Yes/' +  time_now + '.jpg'
+            savedir = './saved_screenshots/Yes/' +  time_now + '.png'
             screenshot.save(savedir)
         
         else:
             time_now = str(datetime.datetime.now())
-            savedir = './saved_screenshots/No/' +  time_now + '.jpg'
+            savedir = './saved_screenshots/No/' +  time_now + '.png'
             screenshot.save(savedir)
                 
     
