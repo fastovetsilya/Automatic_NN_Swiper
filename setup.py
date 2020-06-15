@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='Automatic swiper for dating sites', 
+    name='autoswipe', 
     version='0.0.1',
     author='Ilya Fastovets',
     author_email='ilya.fastovets@gmail.com',
