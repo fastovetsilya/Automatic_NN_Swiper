@@ -194,3 +194,4 @@ tk.Button(main_window, text = 'Run smart swiper', width = 15, command = Commande
 tk.Button(main_window, text = 'Build model', width = 15, command = Commander.build_model).pack()
 tk.Button(main_window, text = 'Sort images', width = 15, command = Commander.sort_images).pack()
 main_window.mainloop()
+

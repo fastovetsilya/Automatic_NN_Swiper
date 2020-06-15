@@ -184,3 +184,5 @@ def train_model(validation_mode=True, epochs=20,
         
     # Save the model
     model.save('trained_model.h5')
+
+
