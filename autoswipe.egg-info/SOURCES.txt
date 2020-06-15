@@ -1,0 +1,12 @@
+README.md
+setup.py
+autoswipe/__init__.py
+autoswipe/__main__.py
+autoswipe/autorun.py
+autoswipe/clicker.py
+autoswipe/model.py
+autoswipe.egg-info/PKG-INFO
+autoswipe.egg-info/SOURCES.txt
+autoswipe.egg-info/dependency_links.txt
+autoswipe.egg-info/requires.txt
+autoswipe.egg-info/top_level.txt

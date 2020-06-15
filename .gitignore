@@ -8,6 +8,9 @@
 !*.py
 !/icons/no.png
 !/icons/yes.png
+!/autoswipe.egg-info/*
+!/build/*
+!/dist/*
 !LICENSE                             
 !README.md   
 
