@@ -1,12 +1,10 @@
 # import matplotlib.pyplot as plt
 from model import matthews_correlation
-# from skimage.transform import resize
 from keras.preprocessing.image import img_to_array
 from keras.models import load_model
 import numpy as np
 import os
 import pyautogui
-# import matplotlib.pyplot as plt
 import datetime
 
 
