@@ -16,7 +16,6 @@ setuptools.setup(
     version='0.0.1',
     author='Ilya Fastovets',
     author_email='ilya.fastovets@gmail.com',
-    packages=['autoswiper'],
     description='',
     long_description=long_description,
     long_description_content_type='text/markdown',
