@@ -13,7 +13,7 @@ The tool does not require API and interacts with the browser only by taking scre
 initiating mouse clicks. 
 
 <div align="center">
-  <img src="https://github.com/fastovetsilya/Automatic_NN_Swiper/tree/master/examples/bumble_logo.png"><br><br>
+  <img src="https://github.com/fastovetsilya/Automatic_NN_Swiper/blob/master/examples/bumble_logo.png"><br><br>
 </div>
 
 ## Installation 
