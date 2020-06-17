@@ -6,6 +6,7 @@
 !.gitignore
 
 !*.py
+!/examples/*
 !/icons/no.png
 !/icons/yes.png
 !LICENSE                             
