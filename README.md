@@ -55,6 +55,24 @@ screenshots.
 
 **Sort images** An app to sort saved screenshots in a way similar to dating apps. 
 
+### Build model window
+
+<div align="center">
+  <img src="https://github.com/fastovetsilya/Automatic_NN_Swiper/blob/master/examples/build_model_window.png"><br><br>
+</div>
+
+The neural is trained uing pre-configured parameters for convenience. In theory, it weights the classes to account for the unbalanced samples. However, it is better to keep the number of images in Yes/No folders close to the same. 
+
+For simplicity, all the training parameters are not changed in this window. They can be adjusted, however, in the model.py file. 
+
+The two available options for training the model are: 
+
+**Use validation** Train the model with a 20% validation set. This allows to display the validation metrics in the terminal (validation accuracy and validation Matthews correlation), but some of the data is lost.
+
+**No validation** Train the model without a validation set. This saves samples, but makes it impossible to see the validation metrics. 
+
+One of the ways to train the model is to train it with validation first, and if the results are good, train with no validation. 
+
 
 
 
