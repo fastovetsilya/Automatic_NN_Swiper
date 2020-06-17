@@ -103,6 +103,7 @@ class Model():
 
         # Initialize and compile the model
         model = self.convolutional_model()
+        model = self.model
         model.compile(optimizer='adam', loss='binary_crossentropy',
                       metrics=['binary_accuracy', self.matthews_correlation])
 

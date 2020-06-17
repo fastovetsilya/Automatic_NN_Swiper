@@ -113,9 +113,9 @@ class Commander():
         tk.Label(self.build_model_window, text='Please choose validation preference',
                  font=('Verdana', 15)).pack(pady=10)
         tk.Button(self.build_model_window, text='Use validation',
-                  width=15, command=Commander.train_model_with_validation).pack()
+                  width=15, command=self.train_model_with_validation).pack()
         tk.Button(self.build_model_window, text='No validation', width=15,
-                  command=Commander.train_model_without_validation).pack()
+                  command=self.train_model_without_validation).pack()
         self.build_model_window.mainloop()
 
     def sort_image_yes(self, *args):
