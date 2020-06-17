@@ -61,7 +61,7 @@ screenshots.
   <img src="https://github.com/fastovetsilya/Automatic_NN_Swiper/blob/master/examples/build_model_window.png"><br><br>
 </div>
 
-The neural is trained uing pre-configured parameters for convenience. In theory, it weights the classes to account for the unbalanced samples. However, it is better to keep the number of images in Yes/No folders close to the same. 
+The neural network is trained using pre-configured parameters for convenience. In theory, it weights the classes to account for the unbalanced samples. However, it is better to keep the number of images in Yes/No folders close to the same. 
 
 For simplicity, all the training parameters are not changed in this window. They can be adjusted, however, in the model.py file. 
 
