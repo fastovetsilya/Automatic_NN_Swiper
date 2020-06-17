@@ -73,7 +73,14 @@ The two available options for training the model are:
 
 One of the ways to train the model is to train it with validation first, and if the results are good, train with no validation. 
 
+### Sort images window
 
+<div align="center">
+  <img src="https://github.com/fastovetsilya/Automatic_NN_Swiper/blob/master/examples/sort_images_window.png"><br><br>
+</div>
+
+An app to sort saved sreenshots into Yes/No directories to train the model. The interface is similar to the interface of the dating apps. 
+Press Right for 'Yes' and Left for 'No'. 
 
 
 
