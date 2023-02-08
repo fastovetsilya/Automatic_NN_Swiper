@@ -1,6 +1,6 @@
 # import matplotlib.pyplot as plt
 from model import Model
-from keras.preprocessing.image import img_to_array
+from tensorflow.keras.utils import img_to_array
 from keras.models import load_model
 import numpy as np
 import os
@@ -50,8 +50,8 @@ class Clicker():
                                              int(round(min(yes_position[1], no_position[1])))]
 
                 photo_position = {
-                    'left': photo_bottomright_postion[0] - yes_no_length * 2.8,
-                    'upper': photo_bottomright_postion[1] - yes_no_length * 3.8,
+                    'left': photo_bottomright_postion[0] - yes_no_length * 1.7,
+                    'upper': photo_bottomright_postion[1] - yes_no_length * 2.3,
                     'right': photo_bottomright_postion[0],
                     'lower': photo_bottomright_postion[1]}
 
