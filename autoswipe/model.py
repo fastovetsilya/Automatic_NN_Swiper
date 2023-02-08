@@ -131,9 +131,10 @@ class Model():
 
             # Compute class weights for unbalanced data
             class_weights = class_weight.compute_class_weight(
-                'balanced',
-                np.unique(train_image_generator_dirflow.classes),
-                train_image_generator_dirflow.classes)
+                class_weight='balanced',
+                classes=np.unique(train_image_generator_dirflow.classes),
+                y=train_image_generator_dirflow.classes)
+            class_weights = dict(zip(np.unique(train_image_generator_dirflow.classes), class_weights))
 
             # Initialize the validation data from from val split from train directory
             validation_image_generator_dirflow = train_image_generator.flow_from_directory(
@@ -145,7 +146,7 @@ class Model():
                 subset='validation')
 
             # Train the model
-            model.fit_generator(
+            model.fit(
                 train_image_generator_dirflow,
                 validation_data=validation_image_generator_dirflow,
                 epochs=epochs,
