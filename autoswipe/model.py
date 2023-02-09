@@ -174,12 +174,13 @@ class Model():
 
             # Compute class weights for unbalanced data
             class_weights = class_weight.compute_class_weight(
-                'balanced',
-                np.unique(train_image_generator_dirflow.classes),
-                train_image_generator_dirflow.classes)
+                class_weight='balanced',
+                classes=np.unique(train_image_generator_dirflow.classes),
+                y=train_image_generator_dirflow.classes)
+            class_weights = dict(zip(np.unique(train_image_generator_dirflow.classes), class_weights))
 
             # Train the model
-            model.fit_generator(
+            model.fit(
                 train_image_generator_dirflow,
                 epochs=epochs,
                 class_weight=class_weights)
